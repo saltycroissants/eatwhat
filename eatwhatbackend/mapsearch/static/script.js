@@ -43,8 +43,8 @@ btn.addEventListener("click",
         console.log(index);
     
         document.querySelector("h1").innerHTML = `오늘은 ${foodName[index]} 먹자!`
-        document.querySelector(".btn-onclick").innerHTML = '<button>근처가게보기</button>';
+        document.querySelector(".btn-onclick").innerHTML = '근처가게보기';
         btn.style.gridColumn = 2; 
         console.log('isClicked');
-});
+})
 

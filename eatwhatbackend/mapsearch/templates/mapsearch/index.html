@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>EatWhat</title>
     <!-- script -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
    
 </head>
 <body>
@@ -14,9 +15,11 @@
         <h1 id="title"> 오늘 뭐 먹지?? </h1>
         <p class="em"> 🍔</p>
         <button class="btn"> 골라줘 </button>
-        <span class="btn-onclick"></span>
+        <a href="{% url 'map'%}" class="btn-onclick"></a>
+       <!--<span class="btn-onclick"></span>-->
     </div>
     <!-- javascript -->
-    <script src="script.js"></script>
+  
+    <script src="/static/script.js"></script>
 </body>
 </html>
