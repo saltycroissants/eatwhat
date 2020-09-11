@@ -3,6 +3,7 @@ from django.http import HttpResponse
 #from django.http import JsonResponse
 import os
 import sys
+from random import randint
 #import json
 #import requests #pip3 install requests
 # Create your views here.
@@ -24,7 +25,12 @@ def index(request):
     '''
 
 def index(request):
-    return render(request, 'mapsearch/index.html')
+    emojiList = ["🍔","🍖","🍚","🍕","🥗","🍜"]
+    foodnameList = ["햄버거","고기","밥","피자","샐러드","국수"]
+    index = randint(0, len(emojiList)-1)
+    emo = emojiList[index]
+    foodname = foodnameList[index]
+    return render(request, 'mapsearch/index.html' , {'emo': emo, 'foodname' : foodname})
 
 def map(request):
     return render(request, 'mapsearch/map.html')

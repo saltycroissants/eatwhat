@@ -12,14 +12,35 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="title"> 오늘 뭐 먹지?? </h1>
+        <h1 id="title"> 오늘 뭐 먹지??</h1>
         <p class="em"> 🍔</p>
         <button class="btn"> 골라줘 </button>
         <a href="{% url 'map'%}" class="btn-onclick"></a>
        <!--<span class="btn-onclick"></span>-->
     </div>
-    <!-- javascript -->
+    <!-- javascript 
   
-    <script src="/static/script.js"></script>
+    !<script src="/static/script.js"></script>-->
+    <script type="text/javascript"> 
+
+        const btn = document.querySelector(".btn");
+        isClicked = false;
+        //골라줘 버튼이 눌렸을때
+        btn.addEventListener("click", 
+            function(){
+                //const index = Math.floor(Math.random() * emojiArr.length);  
+                console.log('isClicked');
+                if(isClicked == true) {location.reload();}
+                isClicked =true;
+                btn.innerHTML = "다시하기";
+                document.querySelector(".em").innerHTML = "{{ emo }}";
+                //console.log(index);
+                document.querySelector("h1").innerHTML = "오늘은 {{ foodname }} 먹자!"
+                document.querySelector(".btn-onclick").innerHTML = '근처가게보기';
+                btn.style.gridColumn = 2; 
+                
+        })
+
+     </script>
 </body>
 </html>
