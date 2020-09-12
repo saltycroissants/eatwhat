@@ -14,18 +14,18 @@ function onSuccessGeolocation(position) {
     map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
     //map.setZoom(10); // 지도의 줌 레벨을 변경합니다.
 
-    infowindow.setContent('<div style="padding:20px;">' + 'geolocation.getCurrentPosition() 위치' + '</div>');
+    //infowindow.setContent('<div style="padding:20px;">' + 'geolocation.getCurrentPosition() 위치' + '</div>');
 
-    infowindow.open(map, location);
+    //infowindow.open(map, location);
     console.log('Coordinates: ' + location.toString());
 }
 
 function onErrorGeolocation() {
     let center = map.getCenter();
 
-    infowindow.setContent('<div style="padding:20px;">' +
+    /*infowindow.setContent('<div style="padding:20px;">' +
         '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
-
+*/
     infowindow.open(map, center);
 }
 

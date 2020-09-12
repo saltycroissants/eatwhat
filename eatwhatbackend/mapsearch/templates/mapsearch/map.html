@@ -8,8 +8,15 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q5fmamcz08"></script>
 </head>
 <body>
-<div id="map" style="width:100%;height:400px;"></div>
-
+   
+    <div id="map" style="width:100%;height:400px;"></div>
+    <h1> {{ json_res }}</h1>
+    <script>
+        if({{json_res}} != "error"){
+            let jsonObject = JSON.parse({{ json_res}});
+        console.log(jsonObject);
+    }
+    </script>
 <!--
 <script>
 let mapOptions = {
@@ -18,7 +25,7 @@ let mapOptions = {
 };
 
 let map = new naver.maps.Map('map', mapOptions);
-</script>-->
+</script >-->
     <script src="/static/map.js"></script>
 </body>
 </html>
