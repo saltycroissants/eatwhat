@@ -4,28 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>간단한 지도 표시하기</title>
+    <title>지도에서 검색 표시하기</title>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q5fmamcz08"></script>
 </head>
 <body>
    
     <div id="map" style="width:100%;height:400px;"></div>
     <h1> {{ json_res }}</h1>
+ 
     <script>
-        if({{json_res}} != "error"){
-            let jsonObject = JSON.parse({{ json_res}});
-        console.log(jsonObject);
-    }
-    </script>
-<!--
-<script>
-let mapOptions = {
-    center: new naver.maps.LatLng(37.3595704, 127.105399),
-    zoom: 10
-};
+        let mapOptions = {
+            //center: new naver.maps.LatLng(37.3595704, 127.105399),
+            zoom: 16
+        };
+        let mapDiv = document.getElementById('map');
+        let map = new naver.maps.Map(mapDiv, mapOptions);
 
-let map = new naver.maps.Map('map', mapOptions);
-</script >-->
-    <script src="/static/map.js"></script>
+        const jsonObject = {{ json_res|safe }} ;
+        let markArr = [];
+        //const jsonObject = JSON.parse(js); 
+        if(jsonObject != "error"){
+            let items = jsonObject["items"];
+            for(let i in items) {             
+                let name = items[i]["title"];
+                let map_x = items[i]["map_x"];
+                let map_y = items[i]["map_y"];
+                markArr[i] = new naver.maps.Marker({
+                    position: new naver.maps.LatLng(map_x, map_y),
+                    map: map,
+                    size : new naver.maps.Size(24, 35)
+                });
+            console.log(name);
+            }
+    }
+    markArr[0];
+
+    </script> 
+    <!-- <script src="/static/map.js"></script> -->
 </body>
 </html>

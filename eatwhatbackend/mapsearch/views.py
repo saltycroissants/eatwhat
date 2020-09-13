@@ -52,6 +52,6 @@ def map(request):
     if (res.status_code != 200): 
         json_res = "error"
     else : 
-        json_res = res.json()   
+        json_res = res.json()
   
     return render(request, 'mapsearch/map.html', {'json_res' :json_res})
