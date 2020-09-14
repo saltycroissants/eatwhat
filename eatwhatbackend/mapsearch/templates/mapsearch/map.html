@@ -25,19 +25,27 @@
         //const jsonObject = JSON.parse(js); 
         if(jsonObject != "error"){
             let items = jsonObject["items"];
-            for(let i in items) {             
+            for(let i in items) {      
                 let name = items[i]["title"];
-                let map_x = items[i]["map_x"];
-                let map_y = items[i]["map_y"];
+                let map_x = items[i]["mapx"];
+                let map_y = items[i]["mapy"];
+               //let tm128 = naver.maps.Point(map_x, map_y)
+                //console.log(tm128)
+               // let map_coord = naver.maps.TransCoord.fromTM128ToLatLng(tm128);
+                //console.log(map_coord);
                 markArr[i] = new naver.maps.Marker({
                     position: new naver.maps.LatLng(map_x, map_y),
                     map: map,
-                    size : new naver.maps.Size(24, 35)
+                    title : name
+                    //size : new naver.maps.Size(24, 35)
                 });
-            console.log(name);
+                console.log(markArr[i].position);
+            
             }
     }
-    markArr[0];
+    
+    for (let i =0; i < markArr.length; i++){
+        markArr[i].setMap(map);}
 
     </script> 
     <!-- <script src="/static/map.js"></script> -->
